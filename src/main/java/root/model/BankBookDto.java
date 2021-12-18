@@ -3,17 +3,30 @@ package root.model;
 import java.math.BigDecimal;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import root.validation.Currency;
+import root.validation.EntityCreated;
+import root.validation.EntityUpdated;
+
+import javax.validation.constraints.*;
 
 @Data
 @AllArgsConstructor
 public class BankBookDto {
-    Integer id;
+    @Null(groups = EntityCreated.class)
+    @NotNull(groups = EntityUpdated.class)
+    private Integer id;
 
-    Integer userId;
+    @Null(groups = EntityCreated.class)
+    @NotNull(groups = EntityUpdated.class)
+    private Integer userId;
 
-    String number;
+    @NotBlank(message = "Ошибка! Счет не может быть пустым")
+    private String number;
 
-    BigDecimal amount;
+    @PositiveOrZero
+    @NotNull
+    private BigDecimal amount;
 
-    String currency;
+    @Currency
+    private String currency;
 }
