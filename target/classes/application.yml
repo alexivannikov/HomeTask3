@@ -1,0 +1,14 @@
+spring:
+  thymeleaf:
+    prefix: classpath:/views/
+  datasource:
+    url: jdbc:postgresql://localhost:5432/account
+    username: postgres
+    password: 123
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.xml
+    default-schema:
