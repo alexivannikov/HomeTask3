@@ -3,13 +3,13 @@ package root.mapper;
 import java.math.BigDecimal;
 import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
-import root.model.BankBookDto;
+import root.model.dto.BankBookDto;
 import root.model.entity.BankBookEntity;
 import root.model.entity.CurrencyEntity;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2021-12-15T19:50:52+0300",
+    date = "2021-12-24T16:28:58+0300",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 14.0.2 (AdoptOpenJDK)"
 )
 @Component
@@ -31,9 +31,7 @@ public class BankBookMapperImpl implements BankBookMapper {
         id = bankBookEntity.getId();
         userId = bankBookEntity.getUserId();
         number = bankBookEntity.getNumber();
-        if ( bankBookEntity.getAmount() != null ) {
-            amount = BigDecimal.valueOf( bankBookEntity.getAmount() );
-        }
+        amount = bankBookEntity.getAmount();
 
         BankBookDto bankBookDto = new BankBookDto( id, userId, number, amount, currency );
 
@@ -52,9 +50,7 @@ public class BankBookMapperImpl implements BankBookMapper {
         bankBookEntity.setId( bankBookDto.getId() );
         bankBookEntity.setUserId( bankBookDto.getUserId() );
         bankBookEntity.setNumber( bankBookDto.getNumber() );
-        if ( bankBookDto.getAmount() != null ) {
-            bankBookEntity.setAmount( bankBookDto.getAmount().intValue() );
-        }
+        bankBookEntity.setAmount( bankBookDto.getAmount() );
 
         return bankBookEntity;
     }

@@ -13,7 +13,14 @@ import java.util.Optional;
 public interface BankBookEntityRepository extends JpaRepository <BankBookEntity, Integer> {
     public List<BankBookEntity> findAllByUserId(Integer userId);
 
+    @Query("select b from BankBookEntity b where b.userId = ?1 and b.number = ?2 and b.currency = ?3")
     public Optional<BankBookEntity> findByUserIdAndNumberAndCurrency(Integer userId, String number, CurrencyEntity currencyEntity);
+
+    @Query("select b from BankBookEntity b where b.userId = ?1 and b.number = ?2")
+    public BankBookEntity findByUserIdAndNumber(Integer userId, String number);
+
+    @Query("select b from BankBookEntity b where b.number = ?1")
+    public BankBookEntity findByNumber(String number);
 
     @Query("delete from BankBookEntity b where b.userId = ?1")
     @Modifying

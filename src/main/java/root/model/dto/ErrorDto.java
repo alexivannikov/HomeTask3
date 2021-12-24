@@ -1,4 +1,4 @@
-package root.model;
+package root.model.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;

@@ -1,13 +1,10 @@
 package root.controller;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import root.model.BankBookDto;
-import root.model.BankBookException;
+import root.model.dto.BankBookDto;
 import root.service.BankBookService;
 import root.validation.EntityCreated;
 import root.validation.EntityUpdated;

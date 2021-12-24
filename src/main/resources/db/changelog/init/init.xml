@@ -1,0 +1,208 @@
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="init-schema-dict" author="Ivannikov A.V.">
+        <sql>
+            CREATE SCHEMA IF NOT EXISTS dict;
+        </sql>
+    </changeSet>
+
+    <changeSet id="drop-table-currency" author="Ivannikov A.V.">
+        <sql>
+            DROP TABLE IF EXISTS dict.currency
+        </sql>
+    </changeSet>
+
+    <changeSet id="create-dict-currency-id-seq" author="Ivannikov A.V.">
+        <createSequence sequenceName="currency_id_seq" schemaName="dict"/>
+    </changeSet>
+
+    <changeSet id="create-table-currency" author="Ivannikov A.V.">
+        <createTable tableName="currency" schemaName="dict">
+            <column name="id" type="integer" defaultValueComputed="nextval('dict.currency_id_seq')">
+                <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="name" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="init-usd-in-table-currency" author="Ivannikov A.V.">
+        <insert tableName = "currency" schemaName="dict">
+            <column name="name" value = "USD" />
+        </insert>
+    </changeSet>
+
+    <changeSet id="init-eur-in-table-currency" author="Ivannikov A.V.">
+        <insert tableName = "currency" schemaName="dict">
+            <column name="name" value = "EUR" />
+        </insert>
+    </changeSet>
+
+    <changeSet id="init-rur-in-table-currency" author="Ivannikov A.V.">
+        <insert tableName = "currency" schemaName="dict">
+            <column name="name" value = "RUR" />
+        </insert>
+    </changeSet>
+
+    <changeSet id="init-schema-bank" author="Ivannikov A.V.">
+        <sql>
+            CREATE SCHEMA IF NOT EXISTS bank;
+        </sql>
+    </changeSet>
+
+    <changeSet id="create-bank-bank-book-id-seq" author="Ivannikov A.V.">
+        <createSequence sequenceName="bankbook_id_seq" schemaName="bank"/>
+    </changeSet>
+
+    <changeSet id="drop-table-bank-book" author="Ivannikov A.V.">
+        <sql>
+            DROP TABLE IF EXISTS bank.bank_book CASCADE
+        </sql>
+    </changeSet>
+
+    <changeSet id="create-table-bank-book" author="Ivannikov A.V.">
+        <createTable tableName="bank_book" schemaName="bank">
+            <column name="id" type="integer" defaultValueComputed="nextval('bank.bankbook_id_seq')">
+                <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="user_id" type="integer">
+                <constraints nullable="false"/>
+            </column>
+            <column name="number" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+            <column name="amount" type="number">
+                <constraints nullable="false"/>
+            </column>
+            <column name="currency" type="integer">
+                <constraints nullable="false" foreignKeyName="bank_book_currency_fkey" references="dict.currency(id)"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="first-ins-in-table-bank-book" author="Ivannikov A.V.">
+        <insert tableName = "bank_book" schemaName="bank">
+            <column name="user_id" value = "3" />
+            <column name="number" value = "639043" />
+            <column name="amount" value = "125.0" />
+            <column name="currency" value = "4" />
+        </insert>
+    </changeSet>
+
+    <changeSet id="second-ins-in-table-bank-book" author="Ivannikov A.V.">
+        <insert tableName = "bank_book" schemaName="bank">
+            <column name="user_id" value = "4" />
+            <column name="number" value = "841043" />
+            <column name="amount" value = "100.0" />
+            <column name="currency" value = "4" />
+        </insert>
+    </changeSet>
+
+    <changeSet id="third-ins-in-table-bank-book" author="Ivannikov A.V.">
+        <insert tableName = "bank_book" schemaName="bank">
+            <column name="user_id" value = "1" />
+            <column name="number" value = "221091" />
+            <column name="amount" value = "300.0" />
+            <column name="currency" value = "5" />
+        </insert>
+    </changeSet>
+
+    <changeSet id="fourth-ins-in-table-bank-book" author="Ivannikov A.V.">
+        <insert tableName = "bank_book" schemaName="bank">
+            <column name="user_id" value = "1" />
+            <column name="number" value = "321013" />
+            <column name="amount" value = "250.0" />
+            <column name="currency" value = "6" />
+        </insert>
+    </changeSet>
+
+    <changeSet id="fifth-ins-in-table-bank-book" author="Ivannikov A.V.">
+        <insert tableName = "bank_book" schemaName="bank">
+            <column name="user_id" value = "1" />
+            <column name="number" value = "914552" />
+            <column name="amount" value = "600.0" />
+            <column name="currency" value = "5" />
+        </insert>
+    </changeSet>
+
+    <changeSet id="create-bank-status-id-seq" author="Ivannikov A.V.">
+        <createSequence sequenceName="status_id_seq" schemaName="bank"/>
+    </changeSet>
+
+    <changeSet id="drop-table-status" author="Ivannikov A.V.">
+        <sql>
+            DROP TABLE IF EXISTS bank.status CASCADE
+        </sql>
+    </changeSet>
+
+    <changeSet id="create-table-status" author="Ivannikov A.V.">
+        <createTable tableName="status" schemaName="bank">
+            <column name="id" type="integer" defaultValueComputed="nextval('bank.status_id_seq')">
+                <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="name" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="init-first-transaction-status" author="Ivannikov A.V.">
+        <insert tableName = "status" schemaName="bank">
+            <column name="name" value = "processing" />
+        </insert>
+    </changeSet>
+
+    <changeSet id="init-second-transaction-status" author="Ivannikov A.V.">
+        <insert tableName = "status" schemaName="bank">
+            <column name="name" value = "successful" />
+        </insert>
+    </changeSet>
+
+    <changeSet id="init-third-transaction-status" author="Ivannikov A.V.">
+        <insert tableName = "status" schemaName="bank">
+            <column name="name" value = "declined" />
+        </insert>
+    </changeSet>
+
+    <changeSet id="create-bank-transaction-id-seq" author="Ivannikov A.V.">
+        <createSequence sequenceName="transaction_id_seq" schemaName="bank"/>
+    </changeSet>
+
+    <changeSet id="drop-table-transaction" author="Ivannikov A.V.">
+        <sql>
+            DROP TABLE IF EXISTS bank.transaction CASCADE
+        </sql>
+    </changeSet>
+
+    <changeSet id="create-table-transaction" author="Ivannikov A.V.">
+        <createTable tableName="transaction" schemaName="bank">
+            <column name="id" type="integer" defaultValueComputed="nextval('bank.transaction_id_seq')">
+                <constraints primaryKey="true" nullable="true"/>
+            </column>
+            <column name="source_bank_book_id" type="integer">
+                <constraints nullable="false" foreignKeyName="transaction_bank_book_first_fkey" references="bank.bank_book(id)"/>
+            </column>
+            <column name="target_bank_book_id" type="integer">
+                <constraints nullable="true" foreignKeyName="transaction_bank_book_second_fkey" references="bank.bank_book(id)"/>
+            </column>
+            <column name="amount" type="numeric">
+                <constraints nullable="false"/>
+            </column>
+            <column name="inititation_date" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="completion_date" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="integer">
+                <constraints nullable="false" foreignKeyName="transaction_status_fkey" references="bank.status(id)"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

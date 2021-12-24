@@ -2,7 +2,7 @@ package root.mapper;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import root.model.BankBookDto;
+import root.model.dto.BankBookDto;
 import root.model.entity.BankBookEntity;
 
 @Mapper(componentModel = "spring")

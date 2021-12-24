@@ -2,11 +2,10 @@ package root.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 import root.mapper.BankBookMapper;
-import root.model.BankBookDto;
-import root.model.BankBookException;
+import root.model.dto.BankBookDto;
+import root.model.exception.BankBookException;
 import root.model.entity.BankBookEntity;
 import root.model.entity.CurrencyEntity;
 import root.repository.BankBookEntityRepository;
@@ -53,6 +52,8 @@ public class BankBookServiceImpl implements BankBookService{
 
     public BankBookDto createBankBookDto(BankBookDto bankBookDto) {
         CurrencyEntity currency = currencyEntityRepository.findByName(bankBookDto.getCurrency());
+
+        BankBookEntity b = bankBookMapper.mapToEntity(bankBookDto);
 
         Optional <BankBookEntity> bankBookEntityOptional = bankBookEntityRepository.findByUserIdAndNumberAndCurrency(
                 bankBookDto.getUserId(),

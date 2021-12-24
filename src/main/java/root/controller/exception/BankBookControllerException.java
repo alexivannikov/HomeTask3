@@ -1,11 +1,11 @@
-package root.controller;
+package root.controller.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import root.model.BankBookException;
-import root.model.ErrorDto;
+import root.model.exception.BankBookException;
+import root.model.dto.ErrorDto;
 
 @RestControllerAdvice
 public class BankBookControllerException {

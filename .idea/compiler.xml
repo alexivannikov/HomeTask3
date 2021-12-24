@@ -13,12 +13,14 @@
           <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct/1.4.2.Final/mapstruct-1.4.2.Final.jar" />
         </processorPath>
         <module name="HomeTask3" />
+        <module name="HomeTask4" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="HomeTask3" options="-parameters" />
+      <module name="HomeTask4" options="-parameters" />
     </option>
   </component>
 </project>

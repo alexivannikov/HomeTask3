@@ -26,26 +26,37 @@
     <show-object-properties value="true" />
     <loaded-nodes>
       <connection connection-id="8035f6c6-e3f6-499e-b93e-3ec265955941">
-        <schema name="dict" object-types="table, view, sequence, function, constraint, index, column, dataset trigger" />
-        <schema name="pg_catalog" object-types="function" />
-        <schema name="public" object-types="function" />
+        <schema name="bank" object-types="table, view, sequence, function, constraint, index, column, dataset trigger" />
+        <schema name="dict" object-types="table, view, constraint, index, column, dataset trigger" />
+        <schema name="public" object-types="table, view" />
       </connection>
     </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="8035f6c6-e3f6-499e-b93e-3ec265955941">
-      <console name="Connection" type="STANDARD" schema="dict" session="Main" />
+      <console name="Connection" type="STANDARD" schema="dict" session="Main"><![CDATA[drop table public.databasechangelog]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files>
-      <object connection-id="8035f6c6-e3f6-499e-b93e-3ec265955941" object-ref="schemas/dict/tables/bank_book" />
+      <object connection-id="8035f6c6-e3f6-499e-b93e-3ec265955941" object-ref="schemas/bank/tables/bank_book" />
     </open-files>
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="8035f6c6-e3f6-499e-b93e-3ec265955941" />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="8035f6c6-e3f6-499e-b93e-3ec265955941" dataset="bank.bank" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="8035f6c6-e3f6-499e-b93e-3ec265955941" dataset="dict.currency" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="8035f6c6-e3f6-499e-b93e-3ec265955941" dataset="public.databasechangeloglock" active-filter-id="a33f7486-ebf3-43dc-bd5e-90e3cc89e0f0">
+      <filter id="a33f7486-ebf3-43dc-bd5e-90e3cc89e0f0" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND">
+        <condition column="id" operator="=" value="" active="true" />
+      </filter>
+    </filter-actions>
+    <filter-actions connection-id="8035f6c6-e3f6-499e-b93e-3ec265955941" dataset="bank.status" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="8035f6c6-e3f6-499e-b93e-3ec265955941" dataset="bank.bank_book" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="8035f6c6-e3f6-499e-b93e-3ec265955941" dataset="bank.transaction" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="8035f6c6-e3f6-499e-b93e-3ec265955941" dataset="public.databasechangelog" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="8035f6c6-e3f6-499e-b93e-3ec265955941" dataset="dict.bank_book" active-filter-id="b94b3699-fb73-41ad-9b48-d8fca381f678">
       <filter id="b94b3699-fb73-41ad-9b48-d8fca381f678" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND" />
     </filter-actions>
@@ -98,7 +109,7 @@
           <deprecated-pwd value="MTIz" />
         </database>
         <properties>
-          <auto-commit value="false" />
+          <auto-commit value="true" />
         </properties>
         <ssh-settings>
           <active value="false" />

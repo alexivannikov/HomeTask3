@@ -1,6 +1,6 @@
 package root.service;
 
-import root.model.BankBookDto;
+import root.model.dto.BankBookDto;
 
 import java.util.List;
 

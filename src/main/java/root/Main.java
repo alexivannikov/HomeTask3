@@ -2,12 +2,6 @@ package root;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import root.model.BankBookDto;
-import root.service.BankBookServiceImpl;
-
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 
 @SpringBootApplication
 public class Main {
